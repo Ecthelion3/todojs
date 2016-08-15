@@ -13,7 +13,7 @@ function updateCounters() {
   var todoCount = document.getElementById('todo-count');
   var uncompletedTodos = totalTodos - completedTodos;
   todoCount.innerHTML = uncompletedTodos;
-}
+};
 
 updateCounters();
 
@@ -26,10 +26,10 @@ function toggleDone() {
     checkbox.parentElement.className = "todo completed";
   } else {
     checkbox.parentElement.className = "todo";
-  }
+  };
 
   updateCounters();
-}
+};
 
 function submitTodo() {
   var inputField = document.getElementById("new-todo");
@@ -41,7 +41,7 @@ function submitTodo() {
   inputField.value = null;
 
   updateCounters();
-}
+};
 
 function createTodo(title) {
   // create a list item
@@ -74,14 +74,14 @@ function createTodo(title) {
   list.appendChild(listItem);
 
   updateCounters();
-}
+};
 
 // Every todo has it's own id so we can add that to the corresponding label's
 // "for" attribute to make sure that when we click the label, the checkbox
 // toggles
 function nextTodoId() {
   return document.getElementsByClassName("todo").length + 1;
-}
+};
 
 function cleanUpDoneTodos() {
   var list = document.getElementById("todolist");
@@ -91,7 +91,7 @@ function cleanUpDoneTodos() {
   // changing the index of the remaining items when we remove them
   for (var i = doneItems.length; i > 0; i--) {
     list.removeChild(doneItems[i-1]);
-  }
+  };
 
   updateCounters();
-}
+};

@@ -40,38 +40,36 @@ function submitTodo() {
   // ready to create new todos
   inputField.value = null;
 
-  updateCounters();
-};
+  function createTodo(title) {
+    // create a list item
+    var listItem = document.createElement("li");
+    listItem.className = "todo";
 
-function createTodo(title) {
-  // create a list item
-  var listItem = document.createElement("li");
-  listItem.className = "todo";
+    // create a checkbox and add it to the list item
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = "todo-" + nextTodoId();
+    checkbox.value = "1";
+    checkbox.checked = false;
+    // assign the toggleDone function on the checkbox's onchange event
+    checkbox.onchange = toggleDone.bind(checkbox);
+    listItem.appendChild(checkbox);
 
-  // create a checkbox and add it to the list item
-  var checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.id = "todo-" + nextTodoId();
-  checkbox.value = "1";
-  checkbox.checked = false;
-  // assign the toggleDone function on the checkbox's onchange event
-  checkbox.onchange = toggleDone.bind(checkbox);
-  listItem.appendChild(checkbox);
+    // create some whitespace to put between the checkbox and the label
+    space = document.createTextNode(" ");
+    listItem.appendChild(space);
 
-  // create some whitespace to put between the checkbox and the label
-  space = document.createTextNode(" ");
-  listItem.appendChild(space);
+    //create a label that holds the title and add it to the list item
+    var label = document.createElement("label");
+    label.htmlFor = checkbox.id;
+    label.innerHTML = title;
+    listItem.appendChild(label);
 
-  //create a label that holds the title and add it to the list item
-  var label = document.createElement("label");
-  label.htmlFor = checkbox.id;
-  label.innerHTML = title;
-  listItem.appendChild(label);
-
-  // add the list item with the checkbox, the whitespace and the label
-  // to the list
-  var list = document.getElementById("todolist");
-  list.appendChild(listItem);
+    // add the list item with the checkbox, the whitespace and the label
+    // to the list
+    var list = document.getElementById("todolist");
+    list.appendChild(listItem);
+  };
 
   updateCounters();
 };

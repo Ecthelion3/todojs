@@ -71,14 +71,14 @@ function submitTodo() {
     list.appendChild(listItem);
   };
 
-  updateCounters();
-};
+  // Every todo has it's own id so we can add that to the corresponding label's
+  // "for" attribute to make sure that when we click the label, the checkbox
+  // toggles
+  function nextTodoId() {
+    return document.getElementsByClassName("todo").length + 1;
+  };
 
-// Every todo has it's own id so we can add that to the corresponding label's
-// "for" attribute to make sure that when we click the label, the checkbox
-// toggles
-function nextTodoId() {
-  return document.getElementsByClassName("todo").length + 1;
+  updateCounters();
 };
 
 function cleanUpDoneTodos() {
